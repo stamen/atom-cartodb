@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 /**
  *  FullScreen widget:
  *
@@ -56,6 +58,22 @@ cdb.ui.common.FullScreen = cdb.core.View.extend({
     ev.stopPropagation();
     ev.preventDefault();
 
+    var mapView = this.options.mapView;
+
+    if (atom) {
+      atom.toggleFullScreen();
+
+      if (mapView) {
+
+        if (this.model.get("allowWheelOnFullscreen")) {
+          mapView.options.map.set("scrollwheel", true);
+        }
+
+      }
+
+      return;
+    }
+
     var doc   = window.document;
     var docEl = doc.documentElement;
 
@@ -66,7 +84,6 @@ cdb.ui.common.FullScreen = cdb.core.View.extend({
     var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
     var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
-    var mapView = this.options.mapView;
 
     if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
 

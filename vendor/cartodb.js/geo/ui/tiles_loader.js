@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 /**
  * Show or hide tiles loader
  *

@@ -45,10 +45,16 @@ cdb.core.Template = Backbone.Model.extend({
   },
 
   compile: function() {
-    var tmpl_type = this.get('type') || 'underscore';
+    var tmpl_type = this.get('type') || 'mustache';
     var fn = cdb.core.Template.compilers[tmpl_type];
     if(fn) {
-      return fn(this.get('template'));
+      try {
+        return fn(this.get('template'));
+      } catch (err) {
+        console.log("Template type:", tmpl_type);
+        console.log("Template:", this.get("template"));
+        throw err;
+      }
     } else {
       cdb.log.error("can't get rendered for " + tmpl_type);
     }
@@ -84,7 +90,7 @@ cdb.core.Template = Backbone.Model.extend({
   compile: function(tmpl, type) {
     var t = new cdb.core.Template({
       template: tmpl,
-      type: type || 'underscore'
+      type: type || 'mustache'
     });
     return _.bind(t.render, t);
   }

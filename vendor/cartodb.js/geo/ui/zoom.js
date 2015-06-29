@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 /**
  * View to control the zoom of the map.
  *
