@@ -9,7 +9,15 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
   "dependencies": {
+    "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
     "request": "^2.58.0",
     "space-pen": "^5.0.0"
