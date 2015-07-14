@@ -1,0 +1,8 @@
+.leaflet-control-showzoom {
+	position: relative;
+  width: 26px;
+  height: 26px;
+  background-color: white;
+  text-align: center;
+  padding-top: 4px;
+}

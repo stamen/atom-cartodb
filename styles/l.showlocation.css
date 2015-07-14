@@ -1,0 +1,7 @@
+.leaflet-control-showlocation {
+	position: relative;
+  height: 26px;
+  background-color: white;
+  text-align: center;
+	padding: 4px;
+}
