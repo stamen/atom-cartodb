@@ -60,5 +60,5 @@ export default {
     }
   },
 
-  // provideLinter: linter
+  provideLinter: linter
 };
