@@ -1,7 +1,7 @@
 {
   "name": "cartodb",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "CartoDB Basemap Editor",
   "keywords": [],
   "repository": "https://github.com/stamen/atom-cartodb",
   "license": "MIT",
