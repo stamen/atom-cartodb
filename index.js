@@ -57,6 +57,12 @@ export default {
       description: "CartoDB API Key",
       type: "string",
       default: ""
+    },
+    username: {
+      title: "Username",
+      description: "CartoDB User Name (e.g. {username}.cartodb.com)",
+      type: "string",
+      default: ""
     }
   },
 
