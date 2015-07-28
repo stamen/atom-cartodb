@@ -3,6 +3,7 @@
 ## vNext
 
 * Only lint when configured
+* Only split panes when necessary
 
 ## v0.2.0
 

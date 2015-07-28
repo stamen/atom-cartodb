@@ -15,10 +15,17 @@ const show = function show() {
     previousActivePane = atom.workspace.getActivePane(),
     uri = "cartodb://preview" + projectFile.getPath();
 
+  let split = null;
+
+  if (previousActivePane.items.length > 0) {
+    // only split if there are items open
+    split = "right";
+  }
+
   atom.workspace.open(uri, {
     activatePane: false,
     searchAllPanes: true,
-    split: "right"
+    split: split
   }).done((previewView) => {
     if (previewView instanceof CartodbPreviewView) {
       previousActivePane && previousActivePane.activate();
