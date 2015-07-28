@@ -4,6 +4,9 @@ This is an editor for editing maps on CartoDB. A compatible version of the
 CartoDB basemaps can be found on
 [GitHub at stamen/cartodb-basemaps](https://github.com/stamen/cartodb-basemaps).
 
+To open the preview pane, open the _Command Palette_ (⇧⌘P) and enter some
+variation on "Cartodb: Preview".
+
 ## Configuration
 
 Before use, you'll need to provide your CartoDB username and add an API key.
