@@ -4,6 +4,7 @@
 
 * Only lint when configured
 * Only split panes when necessary
+* Make error control self-contained (and correctly positioned)
 
 ## v0.2.0
 
