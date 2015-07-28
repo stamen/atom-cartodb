@@ -1,5 +1,9 @@
 # Changes
 
+## v0.2.3
+
+* Created named maps when necessary
+
 ## v0.2.2
 
 * Duplicates v0.2.1 (`apm publish` was hanging)
