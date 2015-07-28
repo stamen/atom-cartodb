@@ -1,5 +1,9 @@
 # Changes
 
+## v0.2.2
+
+* Duplicates v0.2.1 (`apm publish` was hanging)
+
 ## v0.2.1
 
 * Only lint when configured
