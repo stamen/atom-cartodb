@@ -1,6 +1,6 @@
 # Changes
 
-## vNext
+## v0.2.1
 
 * Only lint when configured
 * Only split panes when necessary
