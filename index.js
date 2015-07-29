@@ -13,7 +13,13 @@ const show = function show() {
     .filter((x) => x.getBaseName() === "project.yml")
     .shift(),
     previousActivePane = atom.workspace.getActivePane(),
-    uri = "cartodb://preview" + projectFile.getPath();
+    uri = projectFile && `cartodb://preview${projectFile.getPath()}`;
+
+  if (!uri) {
+    atom.notifications.addWarning("Could not find project.yml in the project root.");
+
+    return;
+  }
 
   let split = null;
 

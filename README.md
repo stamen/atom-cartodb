@@ -5,7 +5,8 @@ CartoDB basemaps can be found on
 [GitHub at stamen/cartodb-basemaps](https://github.com/stamen/cartodb-basemaps).
 
 To open the preview pane, open the _Command Palette_ (⇧⌘P) and enter some
-variation on "Cartodb: Preview".
+variation on "Cartodb: Preview". A `project.yml` must be present in the project
+root.
 
 ## Configuration
 

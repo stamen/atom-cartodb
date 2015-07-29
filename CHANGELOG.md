@@ -3,6 +3,7 @@
 ## v0.2.4
 
 * Handle non-CartoCSS errors in the linter
+* Fail gracefully (and with a warning) when no `project.yml` could be found
 
 ## v0.2.3
 
