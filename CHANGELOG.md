@@ -4,6 +4,7 @@
 
 * Handle non-CartoCSS errors in the linter
 * Fail gracefully (and with a warning) when no `project.yml` could be found
+* Display map instantiation errors in the preview pane
 
 ## v0.2.3
 
