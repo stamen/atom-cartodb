@@ -1,5 +1,9 @@
 # Changes
 
+## v0.2.4
+
+* Handle non-CartoCSS errors in the linter
+
 ## v0.2.3
 
 * Created named maps when necessary
