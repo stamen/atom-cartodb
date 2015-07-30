@@ -1,5 +1,6 @@
 "use babel";
 
+import path from "path";
 import url from "url";
 
 import CartodbPreviewView from "./lib/cartodb-preview-view";
@@ -15,24 +16,23 @@ const show = function show(evt) {
 
   let projectFilename = evt.target.dataset.path;
 
+  if (atom.workspace.getActiveTextEditor() &&
+      [".yml", ".yaml"].indexOf(path.extname(atom.workspace.getActiveTextEditor().getPath())) >= 0) {
+    projectFilename = projectFilename || atom.workspace.getActiveTextEditor().getPath();
+  }
+
+  projectFilename = projectFilename || atom.project.getDirectories()
+    .map(x => x.getEntriesSync())
+    .reduce((a, b) => a.concat(b), [])
+    .filter(x => x.isFile())
+    .filter(x => x.getBaseName() === "project.yml")
+    .map(x => x.getPath())
+    .shift();
+
   if (!projectFilename) {
-    if (atom.workspace.getActiveTextEditor()) {
-      projectFilename = atom.workspace.getActiveTextEditor().getPath();
-    } else {
-      projectFilename = atom.project.getDirectories()
-        .map(x => x.getEntriesSync())
-        .reduce((a, b) => a.concat(b), [])
-        .filter(x => x.isFile())
-        .filter(x => x.getBaseName() === "project.yml")
-        .map(x => x.getPath())
-        .shift();
+    atom.notifications.addWarning("Could not find project.yml in the project root.");
 
-      if (!projectFilename) {
-        atom.notifications.addWarning("Could not find project.yml in the project root.");
-
-        return;
-      }
-    }
+    return;
   }
 
   const previousActivePane = atom.workspace.getActivePane(),

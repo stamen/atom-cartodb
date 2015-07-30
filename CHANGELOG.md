@@ -1,5 +1,9 @@
 # Changes
 
+## vNext
+
+* Prevent preview generation for non-project files
+
 ## v0.5.1
 
 * Removed NProgress
