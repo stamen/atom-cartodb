@@ -19,11 +19,11 @@ const show = function show() {
     projectFilename = atom.workspace.getActiveTextEditor().getPath();
   } else {
     projectFilename = atom.project.getDirectories()
-      .map((x) => x.getEntriesSync())
+      .map(x => x.getEntriesSync())
       .reduce((a, b) => a.concat(b), [])
-      .filter((x) => x.isFile())
-      .filter((x) => x.getBaseName() === "project.yml")
-      .map((x) => x.getPath())
+      .filter(x => x.isFile())
+      .filter(x => x.getBaseName() === "project.yml")
+      .map(x => x.getPath())
       .shift();
 
     if (!projectFilename) {
@@ -48,7 +48,7 @@ const show = function show() {
     activatePane: false,
     searchAllPanes: true,
     split: split
-  }).done((previewView) => {
+  }).done(previewView => {
     if (previewView instanceof CartodbPreviewView) {
       previousActivePane && previousActivePane.activate();
     }
@@ -56,13 +56,13 @@ const show = function show() {
 };
 
 export default {
-  activate: (state) => {
+  activate: state => {
     atom.commands.add("atom-workspace", {
       "cartodb:preview": show,
       "cartodb:tilemill-export": tileMillExport
     });
 
-    atom.workspace.addOpener((uriToOpen) => {
+    atom.workspace.addOpener(uriToOpen => {
       let protocol, host, pathname;
 
       try {
