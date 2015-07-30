@@ -36,7 +36,6 @@ const show = function show(projectFilename = null) {
   const previousActivePane = atom.workspace.getActivePane(),
     uri = `cartodb://preview${projectFilename}`;
 
-
   let split = null;
 
   if (previousActivePane.items.length > 0) {
