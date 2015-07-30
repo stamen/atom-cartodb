@@ -1,5 +1,9 @@
 # Changes
 
+## v0.3.0
+
+* Added TileMill exporting
+
 ## v0.2.5
 
 * Display a warning notification when the preview pane can't be opened

@@ -1,0 +1,10 @@
+'menu': [
+  'label': 'Packages'
+  'submenu': [
+    'label': 'CartoDB'
+    'submenu': [
+      'label': 'Export as TileMill Project'
+      'command': 'cartodb:tilemill-export'
+    ]
+  ]
+]

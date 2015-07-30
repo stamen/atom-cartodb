@@ -4,6 +4,7 @@ import url from "url";
 
 import CartodbPreviewView from "./lib/cartodb-preview-view";
 import linter from "./lib/linter";
+import tileMillExport from "./lib/tilemill-export";
 
 const show = function show() {
   const projectFile = atom.project.getDirectories()
@@ -48,7 +49,8 @@ const show = function show() {
 export default {
   activate: (state) => {
     atom.commands.add("atom-workspace", {
-      "cartodb:preview": show
+      "cartodb:preview": show,
+      "cartodb:tilemill-export": tileMillExport
     });
 
     atom.workspace.addOpener((uriToOpen) => {
