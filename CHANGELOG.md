@@ -1,9 +1,10 @@
 # Changes
 
-## vNext
+## v0.5.0
 
 * Retina support
 * Exposed preview + export functionality as menus (context and otherwise)
+* Support for multiple preview panes
 
 ## v0.4.0
 
