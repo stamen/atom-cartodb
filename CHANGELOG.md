@@ -1,5 +1,9 @@
 # Changes
 
+## v0.5.1
+
+* Removed NProgress
+
 ## v0.5.0
 
 * Retina support
