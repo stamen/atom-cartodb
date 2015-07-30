@@ -1,5 +1,9 @@
 # Changes
 
+## vNext
+
+* Retina support
+
 ## v0.4.0
 
 * Support for multiple styles (`<style.yml`; `project.yml` remains the default)
