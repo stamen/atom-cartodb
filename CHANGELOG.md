@@ -1,5 +1,9 @@
 # Changes
 
+## v0.2.5
+
+* Display a warning notification when the preview pane can't be opened
+
 ## v0.2.4
 
 * Handle non-CartoCSS errors in the linter

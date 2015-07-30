@@ -15,6 +15,12 @@ const show = function show() {
     previousActivePane = atom.workspace.getActivePane(),
     uri = projectFile && `cartodb://preview${projectFile.getPath()}`;
 
+  if (!(atom.config.get("cartodb.username") && atom.config.get("cartodb.apiKey"))) {
+    atom.notifications.addWarning("Your CartoDB username and API key are missing. Please check the CartoDB package settings.");
+
+    return;
+  }
+
   if (!uri) {
     atom.notifications.addWarning("Could not find project.yml in the project root.");
 
