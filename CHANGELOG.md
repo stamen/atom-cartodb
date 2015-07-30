@@ -3,6 +3,7 @@
 ## vNext
 
 * Retina support
+* Exposed preview + export functionality as menus (context and otherwise)
 
 ## v0.4.0
 

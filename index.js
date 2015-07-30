@@ -6,30 +6,30 @@ import CartodbPreviewView from "./lib/cartodb-preview-view";
 import linter from "./lib/linter";
 import tileMillExport from "./lib/tilemill-export";
 
-const show = function show() {
+const show = function show(projectFilename = null) {
   if (!(atom.config.get("cartodb.username") && atom.config.get("cartodb.apiKey"))) {
     atom.notifications.addWarning("Your CartoDB username and API key are missing. Please check the CartoDB package settings.");
 
     return;
   }
 
-  let projectFilename;
+  if (typeof projectFilename !== "string") {
+    if (atom.workspace.getActiveTextEditor()) {
+      projectFilename = atom.workspace.getActiveTextEditor().getPath();
+    } else {
+      projectFilename = atom.project.getDirectories()
+        .map(x => x.getEntriesSync())
+        .reduce((a, b) => a.concat(b), [])
+        .filter(x => x.isFile())
+        .filter(x => x.getBaseName() === "project.yml")
+        .map(x => x.getPath())
+        .shift();
 
-  if (atom.workspace.getActiveTextEditor()) {
-    projectFilename = atom.workspace.getActiveTextEditor().getPath();
-  } else {
-    projectFilename = atom.project.getDirectories()
-      .map(x => x.getEntriesSync())
-      .reduce((a, b) => a.concat(b), [])
-      .filter(x => x.isFile())
-      .filter(x => x.getBaseName() === "project.yml")
-      .map(x => x.getPath())
-      .shift();
+      if (!projectFilename) {
+        atom.notifications.addWarning("Could not find project.yml in the project root.");
 
-    if (!projectFilename) {
-      atom.notifications.addWarning("Could not find project.yml in the project root.");
-
-      return;
+        return;
+      }
     }
   }
 
@@ -55,12 +55,30 @@ const show = function show() {
   });
 };
 
+const previewFile = function previewFile(evt) {
+  return show(evt.target.dataset.path);
+};
+
+const tileMillExportFile = function tileMillExportFile(evt) {
+  return tileMillExport(evt.target.dataset.path);
+};
+
 export default {
   activate: state => {
     atom.commands.add("atom-workspace", {
       "cartodb:preview": show,
       "cartodb:tilemill-export": tileMillExport
     });
+
+    atom.commands.add(".tree-view .file .name[data-name$=\\.yml]", {
+      "cartodb:preview-file": previewFile,
+      "cartodb:tilemill-export-file": tileMillExportFile
+    })
+
+    atom.commands.add(".tree-view .file .name[data-name$=\\.yaml]", {
+      "cartodb:preview-file": previewFile,
+      "cartodb:tilemill-export-file": tileMillExportFile
+    })
 
     atom.workspace.addOpener(uriToOpen => {
       let protocol, host, pathname;
