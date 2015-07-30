@@ -6,14 +6,16 @@ import CartodbPreviewView from "./lib/cartodb-preview-view";
 import linter from "./lib/linter";
 import tileMillExport from "./lib/tilemill-export";
 
-const show = function show(projectFilename = null) {
+const show = function show(evt) {
   if (!(atom.config.get("cartodb.username") && atom.config.get("cartodb.apiKey"))) {
     atom.notifications.addWarning("Your CartoDB username and API key are missing. Please check the CartoDB package settings.");
 
     return;
   }
 
-  if (typeof projectFilename !== "string") {
+  let projectFilename = evt.target.dataset.path;
+
+  if (!projectFilename) {
     if (atom.workspace.getActiveTextEditor()) {
       projectFilename = atom.workspace.getActiveTextEditor().getPath();
     } else {
@@ -54,14 +56,6 @@ const show = function show(projectFilename = null) {
   });
 };
 
-const previewFile = function previewFile(evt) {
-  return show(evt.target.dataset.path);
-};
-
-const tileMillExportFile = function tileMillExportFile(evt) {
-  return tileMillExport(evt.target.dataset.path);
-};
-
 export default {
   activate: state => {
     atom.commands.add("atom-workspace", {
@@ -70,13 +64,13 @@ export default {
     });
 
     atom.commands.add(".tree-view .file .name[data-name$=\\.yml]", {
-      "cartodb:preview-file": previewFile,
-      "cartodb:tilemill-export-file": tileMillExportFile
+      "cartodb:preview-file": show,
+      "cartodb:tilemill-export-file": tileMillExport
     })
 
     atom.commands.add(".tree-view .file .name[data-name$=\\.yaml]", {
-      "cartodb:preview-file": previewFile,
-      "cartodb:tilemill-export-file": tileMillExportFile
+      "cartodb:preview-file": show,
+      "cartodb:tilemill-export-file": tileMillExport
     })
 
     atom.workspace.addOpener(uriToOpen => {
