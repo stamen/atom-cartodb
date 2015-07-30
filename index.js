@@ -7,26 +7,35 @@ import linter from "./lib/linter";
 import tileMillExport from "./lib/tilemill-export";
 
 const show = function show() {
-  const projectFile = atom.project.getDirectories()
-    .map((x) => x.getEntriesSync())
-    .reduce((a, b) => a.concat(b), [])
-    .filter((x) => x.isFile())
-    .filter((x) => x.getBaseName() === "project.yml")
-    .shift(),
-    previousActivePane = atom.workspace.getActivePane(),
-    uri = projectFile && `cartodb://preview${projectFile.getPath()}`;
-
   if (!(atom.config.get("cartodb.username") && atom.config.get("cartodb.apiKey"))) {
     atom.notifications.addWarning("Your CartoDB username and API key are missing. Please check the CartoDB package settings.");
 
     return;
   }
 
-  if (!uri) {
-    atom.notifications.addWarning("Could not find project.yml in the project root.");
+  let projectFilename;
 
-    return;
+  if (atom.workspace.getActiveTextEditor()) {
+    projectFilename = atom.workspace.getActiveTextEditor().getPath();
+  } else {
+    projectFilename = atom.project.getDirectories()
+      .map((x) => x.getEntriesSync())
+      .reduce((a, b) => a.concat(b), [])
+      .filter((x) => x.isFile())
+      .filter((x) => x.getBaseName() === "project.yml")
+      .map((x) => x.getPath())
+      .shift();
+
+    if (!projectFilename) {
+      atom.notifications.addWarning("Could not find project.yml in the project root.");
+
+      return;
+    }
   }
+
+  const previousActivePane = atom.workspace.getActivePane(),
+    uri = `cartodb://preview${projectFilename}`;
+
 
   let split = null;
 

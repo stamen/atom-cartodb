@@ -1,5 +1,9 @@
 # Changes
 
+## v0.4.0
+
+* Support for multiple styles (`<style.yml`; `project.yml` remains the default)
+
 ## v0.3.0
 
 * Added TileMill exporting
