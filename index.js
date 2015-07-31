@@ -18,7 +18,7 @@ const show = function show(evt) {
   let projectFilename = evt.target.dataset.path;
 
   if (atom.workspace.getActiveTextEditor() &&
-      [".yml", ".yaml"].indexOf(path.extname(atom.workspace.getActiveTextEditor().getPath())) >= 0) {
+      [".yml"].indexOf(path.extname(atom.workspace.getActiveTextEditor().getPath())) >= 0) {
     projectFilename = projectFilename || atom.workspace.getActiveTextEditor().getPath();
   }
 

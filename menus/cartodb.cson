@@ -23,9 +23,3 @@ menu: [
       { label: "Export as Named Map JSON", command: "cartodb:cartodb-export" }
       { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
     ]
-  ".tree-view .file .name[data-name$=\\.yaml]":
-    [
-      { label: "CartoDB Preview", command: "cartodb:preview" }
-      { label: "Export as Named Map JSON", command: "cartodb:cartodb-export" }
-      { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
-    ]
