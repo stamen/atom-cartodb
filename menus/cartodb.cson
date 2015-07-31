@@ -12,16 +12,16 @@ menu: [
 "context-menu":
   "atom-text-editor:not([mini])[data-grammar~='source'][data-grammar~='yaml']":
     [
-      {label: "CartoDB Preview", command: "cartodb:preview"}
-      {label: "Export as TileMill Project", command: "cartodb:tilemill-export"}
+      { label: "CartoDB Preview", command: "cartodb:preview" }
+      { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
     ]
   ".tree-view .file .name[data-name$=\\.yml]":
     [
-      {label: "CartoDB Preview", command: "cartodb:preview-file"}
-      {label: "Export as TileMill Project", command: "cartodb:tilemill-export-file"}
+      { label: "CartoDB Preview", command: "cartodb:preview" }
+      { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
     ]
   ".tree-view .file .name[data-name$=\\.yaml]":
     [
-      {label: "CartoDB Preview", command: "cartodb:preview-file"}
-      {label: "Export as TileMill Project", command: "cartodb:tilemill-export-file"}
+      { label: "CartoDB Preview", command: "cartodb:preview" }
+      { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
     ]

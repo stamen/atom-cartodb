@@ -63,16 +63,6 @@ export default {
       "cartodb:tilemill-export": tileMillExport
     });
 
-    atom.commands.add(".tree-view .file .name[data-name$=\\.yml]", {
-      "cartodb:preview-file": show,
-      "cartodb:tilemill-export-file": tileMillExport
-    })
-
-    atom.commands.add(".tree-view .file .name[data-name$=\\.yaml]", {
-      "cartodb:preview-file": show,
-      "cartodb:tilemill-export-file": tileMillExport
-    })
-
     atom.workspace.addOpener(uriToOpen => {
       let protocol, host, pathname;
 
