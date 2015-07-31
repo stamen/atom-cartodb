@@ -3,6 +3,7 @@
 ## vNext
 
 * Prevent preview generation for non-project files
+* Added CartoDB named map (JSON) exporting
 
 ## v0.5.1
 
