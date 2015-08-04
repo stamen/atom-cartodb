@@ -4,6 +4,7 @@
 
 * Prevent preview generation for non-project files
 * Added CartoDB named map (JSON) exporting
+* Fix retina support
 
 ## v0.5.1
 
