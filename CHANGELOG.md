@@ -1,5 +1,9 @@
 # Changes
 
+## v0.6.1
+
+* Linter bug fix
+
 ## v0.6.0
 
 * Prevent preview generation for non-project files
