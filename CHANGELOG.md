@@ -4,6 +4,8 @@
 
 * Include file path in general linting errors
 * Improved messaging about errors and warnings
+* Simplified named map YAML representation
+* Introduced the notion of a "layer catalog" (for named maps to reference)
 
 ## v0.6.1
 
