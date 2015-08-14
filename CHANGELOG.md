@@ -3,6 +3,7 @@
 ## v0.7.0
 
 * Include file path in general linting errors
+* Improved messaging about errors and warnings
 
 ## v0.6.1
 
