@@ -4,6 +4,7 @@ menu: [
     label: "CartoDB"
     submenu: [
       { label: "Preview", command: "cartodb:preview" }
+      { label: "Render", command: "cartodb:render" }
       { label: "Export as Named Map JSON", command: "cartodb:cartodb-export" }
       { label: "Export as TileMill Project", command: "cartodb:tilemill-export" }
     ]

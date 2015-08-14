@@ -16,9 +16,13 @@
     }
   },
   "dependencies": {
+    "abaculus": "^1.2.0",
     "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
+    "mapnik": "mojodna/node-mapnik#v3.3.0-atom",
     "request": "^2.58.0",
-    "space-pen": "^5.0.0"
+    "space-pen": "^5.0.0",
+    "tilelive": "^5.8.2",
+    "tilelive-cartodb": "^0.1.0"
   }
 }

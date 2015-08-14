@@ -5,6 +5,7 @@ import url from "url";
 
 import cartodbExport from "./lib/cartodb-export";
 import CartodbPreviewView from "./lib/cartodb-preview-view";
+import generatePreview from "./lib/generate-preview";
 import linter from "./lib/linter";
 import tileMillExport from "./lib/tilemill-export";
 
@@ -61,6 +62,7 @@ export default {
   activate: state => {
     atom.commands.add("atom-workspace", {
       "cartodb:preview": show,
+      "cartodb:render": generatePreview,
       "cartodb:cartodb-export": cartodbExport,
       "cartodb:tilemill-export": tileMillExport
     });
