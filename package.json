@@ -16,6 +16,7 @@
     }
   },
   "dependencies": {
+    "cartodb-yaml": "^0.1.0",
     "debug": "^2.2.0",
     "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
