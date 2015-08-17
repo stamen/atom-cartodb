@@ -16,6 +16,7 @@
     }
   },
   "dependencies": {
+    "debug": "^2.2.0",
     "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
     "request": "^2.58.0",
