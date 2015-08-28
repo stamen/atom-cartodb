@@ -1,5 +1,9 @@
 # Changes
 
+## v0.7.1
+
+* Fix linting
+
 ## v0.7.0
 
 * Include file path in general linting errors
