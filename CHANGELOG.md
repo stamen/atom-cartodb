@@ -1,5 +1,9 @@
 # Changes
 
+## v0.7.2
+
+* Attempt to create new templates for all 4xx responses
+
 ## v0.7.1
 
 * Fix linting
