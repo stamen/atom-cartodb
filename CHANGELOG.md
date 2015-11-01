@@ -1,5 +1,10 @@
 # Changes
 
+## v0.7.3
+
+* Remove use of `Promise.finally`, which appears to have disappeared in Atom
+  1.1.0
+
 ## v0.7.2
 
 * Attempt to create new templates for all 4xx responses
