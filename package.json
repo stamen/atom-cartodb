@@ -20,7 +20,15 @@
     "debug": "^2.2.0",
     "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
+    "react": "^0.14.2",
+    "react-redux": "^4.0.0",
+    "redux": "^3.0.4",
+    "redux-logger": "^2.0.4",
     "request": "^2.58.0",
     "space-pen": "^5.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.4",
+    "eslint": "^1.9.0"
   }
 }

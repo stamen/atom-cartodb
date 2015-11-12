@@ -3,10 +3,31 @@
 import path from "path";
 import url from "url";
 
+import {Provider} from "react-redux";
+import React from "react";
+import ReactDOM from "react-dom";
+
 import cartodbExport from "./lib/cartodb-export";
-import CartodbPreviewView from "./lib/cartodb-preview-view";
+import Preview from "./lib/components/preview";
 import linter from "./lib/linter";
+import Model from "./lib/model";
 import tileMillExport from "./lib/tilemill-export";
+
+
+atom.views.addViewProvider(Model, model => {
+  const container = document.createElement("div");
+  container.className = "cartodb-preview native-key-bindings";
+  container.tabIndex = "-1";
+
+  ReactDOM.render(
+    <Provider store={model.store}>
+      <Preview />
+    </Provider>,
+    container
+  );
+
+  return container;
+});
 
 const show = function show(evt) {
   if (!(atom.config.get("cartodb.username") && atom.config.get("cartodb.apiKey"))) {
@@ -50,10 +71,8 @@ const show = function show(evt) {
     activatePane: false,
     searchAllPanes: true,
     split: split
-  }).done(previewView => {
-    if (previewView instanceof CartodbPreviewView) {
-      previousActivePane && previousActivePane.activate();
-    }
+  }).done(model => {
+    model.pane = atom.workspace.paneForItem(model);
   });
 };
 
@@ -62,7 +81,7 @@ export default {
     atom.commands.add("atom-workspace", {
       "cartodb:preview": show,
       "cartodb:cartodb-export": cartodbExport,
-      "cartodb:tilemill-export": tileMillExport
+      "cartodb:tilemill-export": tileMillExport,
     });
 
     atom.workspace.addOpener(uriToOpen => {
@@ -78,10 +97,16 @@ export default {
         return;
       }
 
-      return new CartodbPreviewView({
+      return new Model({
         filename: pathname
       });
     });
+
+    // attach the associated pane with the model (for activity / size tracking purposes)
+    atom.workspace
+      .getPaneItems()
+      .filter(x => x instanceof Model)
+      .forEach(x => x.setPane(atom.workspace.paneForItem(x)));
   },
 
   config: {
