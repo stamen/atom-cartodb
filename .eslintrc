@@ -1,8 +1,16 @@
 {
+  "parser": "babel-eslint",
   "ecmaFeatures": {
-    "jsx": true
+    "jsx": true,
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "modules": true,
+    "classes": true
   },
   "parser": "babel-eslint",
+  "plugins": [
+    "babel"
+  ],
   "env": {
     "node": true,
     "mocha": true

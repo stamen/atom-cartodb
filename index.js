@@ -3,18 +3,21 @@
 import path from "path";
 import url from "url";
 
+import mapnik from "mapnik";
 import {Provider} from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
 
 import cartodbExport from "./lib/cartodb-export";
+import CartoCSSProject from "./lib/cartocss_project";
+import CartoDBProject from "./lib/cartodb_project";
 import Preview from "./lib/components/preview";
 import linter from "./lib/linter";
-import Model from "./lib/model";
+import MapProject from "./lib/model";
 import tileMillExport from "./lib/tilemill-export";
 
 
-atom.views.addViewProvider(Model, model => {
+atom.views.addViewProvider(MapProject, model => {
   const container = document.createElement("div");
   container.className = "cartodb-preview native-key-bindings";
   container.tabIndex = "-1";
@@ -39,7 +42,7 @@ const show = function show(evt) {
   let projectFilename = evt.target.dataset.path;
 
   if (atom.workspace.getActiveTextEditor() &&
-      [".yml"].indexOf(path.extname(atom.workspace.getActiveTextEditor().getPath())) >= 0) {
+      ["mml", ".yml"].indexOf(path.extname(atom.workspace.getActiveTextEditor().getPath())) >= 0) {
     projectFilename = projectFilename || atom.workspace.getActiveTextEditor().getPath();
   }
 
@@ -47,7 +50,8 @@ const show = function show(evt) {
     .map(x => x.getEntriesSync())
     .reduce((a, b) => a.concat(b), [])
     .filter(x => x.isFile())
-    .filter(x => x.getBaseName() === "project.yml")
+    // .filter(x => x.getBaseName() === "project.yml")
+    .filter(x => x.getBaseName() === "project.mml")
     .map(x => x.getPath())
     .shift();
 
@@ -72,7 +76,7 @@ const show = function show(evt) {
     searchAllPanes: true,
     split: split
   }).then(model => {
-    model.pane = atom.workspace.paneForItem(model);
+    model.setPane(atom.workspace.paneForItem(model));
   });
 };
 
@@ -97,7 +101,8 @@ export default {
         return;
       }
 
-      return new Model({
+      // return new CartoDBProject({
+      return new CartoCSSProject({
         filename: pathname
       });
     });
@@ -105,8 +110,11 @@ export default {
     // attach the associated pane with the model (for activity / size tracking purposes)
     atom.workspace
       .getPaneItems()
-      .filter(x => x instanceof Model)
+      .filter(x => x instanceof MapProject)
       .forEach(x => x.setPane(atom.workspace.paneForItem(x)));
+
+    console.log("Mapnik version:", mapnik.version);
+    console.log("Mapnik versions:", mapnik.versions);
   },
 
   config: {

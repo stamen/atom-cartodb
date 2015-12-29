@@ -25,21 +25,33 @@
   "dependencies": {
     "cartodb-yaml": "^0.1.0",
     "debug": "^2.2.0",
+    "express": "^4.13.3",
     "js-yaml": "^3.3.1",
     "leaflet": "^0.7.3",
+    "mapnik": "mojodna/node-mapnik#v3.4.10-atom",
+    "portfinder": "^0.4.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-redux": "^4.0.0",
     "redux": "^3.0.4",
     "redux-logger": "^2.0.4",
     "request": "^2.58.0",
-    "space-pen": "^5.0.0"
+    "space-pen": "^5.0.0",
+    "tessera": "^0.5.3",
+    "tilejson": "^1.0.0",
+    "tilelive": "^5.11.0",
+    "tilelive-cache": "^0.5.1",
+    "tilelive-carto": "^0.4.0",
+    "tilelive-http": "^0.8.0",
+    "tilelive-mapnik": "^0.6.17",
+    "tilelive-modules": "^0.2.0"
   },
   "bundledDependencies": {
     "depd": "^1.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.4",
-    "eslint": "^1.9.0"
+    "eslint": "^1.9.0",
+    "eslint-plugin-babel": "^2.1.1"
   }
 }
