@@ -8,6 +8,13 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "activationCommands": {
+    "atom-workspace": [
+      "cartodb:preview",
+      "cartodb:cartodb-export",
+      "cartodb:tilemill-export"
+    ]
+  },
   "providedServices": {
     "linter": {
       "versions": {
