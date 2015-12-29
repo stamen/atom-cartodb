@@ -72,7 +72,7 @@ const show = function show(evt) {
     searchAllPanes: true,
     split: split
   }).then(model => {
-    model.pane = atom.workspace.paneForItem(model);
+    model.setPane(atom.workspace.paneForItem(model));
   });
 };
 
